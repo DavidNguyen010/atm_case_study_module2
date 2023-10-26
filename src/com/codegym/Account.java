@@ -27,7 +27,9 @@ public class Account {
     }
 
 
-
+    public static String getCURRENCY(){
+        return CURRENCY;
+    }
     public String getId() {
         return id;
     }
@@ -41,7 +43,7 @@ public class Account {
     }
 
     public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+        this.customerName = customerName.toUpperCase();
     }
 
     public String getAccountNumber() {

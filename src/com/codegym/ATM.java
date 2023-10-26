@@ -8,7 +8,7 @@ public class ATM extends Bank{
         int choice;
 
         ArrayList<CurrentAccount> currentAccounts
-                = new ArrayList<CurrentAccount>();
+                = new ArrayList<>();
 
         do {
             Bank.printMenu();
@@ -18,47 +18,39 @@ public class ATM extends Bank{
                 case 11:{
                     if (currentAccounts.isEmpty()){
                         currentAccounts.add(CurrentAccount.CreateAccount());
-                        Bank.pressEnter();
-                        break;
                     }else {
                         System.out.println("Tài khoản đã được tạo.");
-                        Bank.pressEnter();
-                        break;
                     }
+                    Bank.pressEnter();
+                    break;
                 }
                 case 12:{
                     if (currentAccounts.isEmpty()){
                         System.out.println("Hãy mở tài khoản trước");
-                        Bank.pressEnter();
-                        break;
                     }else {
                         currentAccounts.get(0).withdraw();
                         System.out.println("RÚT TIỀN THÀNH CÔNG.");
-                        Bank.pressEnter();
                     }
+                    Bank.pressEnter();
                     break;
                 }
                 case 13:{
                     if (currentAccounts.isEmpty()){
                         System.out.println("Hãy mở tài khoản trước.");
-                        Bank.pressEnter();
-                        break;
                     }else {
                         currentAccounts.get(0).deposit();
                         System.out.println("NẠP TIỀN THÀNH CÔNG");
-                        Bank.pressEnter();
                     }
+                    Bank.pressEnter();
                     break;
                 }
                 case 14:{
                     if (currentAccounts.isEmpty()){
                         System.out.println("Hãy mở tài khoản trước.");
-                        Bank.pressEnter();
-                        break;
                     }else {
                         currentAccounts.get(0).printAccountCard();
-                        Bank.pressEnter();
                     }
+                    Bank.pressEnter();
                     break;
                 }
                 case 15: {
@@ -73,7 +65,7 @@ public class ATM extends Bank{
                     }else {
                         Bank.printTransactionActivity();
                         currentAccounts.get(0).getTransactions()
-                                .forEach(transaction -> transaction.printTransaction() );
+                                .forEach(Transaction::printTransaction);
                         System.out.println("\n");
                         Bank.pressEnter();
                     }
@@ -83,59 +75,50 @@ public class ATM extends Bank{
                 case 21:{
                     if (currentAccounts.isEmpty()) {
                         System.out.println("Hãy mở tài khoản trước.");
-                        Bank.pressEnter();
-                        break;
                     }else {
                         currentAccounts.get(0).getSavingAccounts().
                                 add(currentAccounts.get(0).createSavingAccount());
-                        Bank.pressEnter();
-                        break;
                     }
+                    Bank.pressEnter();
+                    break;
                 }
 
 
                 case 22:{
                     if (currentAccounts.isEmpty()){
                         System.out.println("Hãy mở tài khoản trước.");
-                        Bank.pressEnter();
-                        break;
                     }else {
                         if (currentAccounts.get(0).getSavingAccounts().isEmpty()){
                             System.out.println("D co tk tiet kiem");
-                            Bank.pressEnter();
-                            break;
                         }else {
                             currentAccounts.get(0).getSavingAccounts().get(0).SavingCalculator();
-                            Bank.pressEnter();
-                            break;
                         }
                     }
+                    Bank.pressEnter();
+                    break;
                 }
 
                 //bug
                 case 23:{
                     if (currentAccounts.isEmpty()){
                         System.out.println("Hãy mở tài khoản trước.");
-                        Bank.pressEnter();
-                        break;
                     }else {
                         if (currentAccounts.get(0).getSavingAccounts().isEmpty()){
                             System.out.println("D co tk tiet kiem");
-                            Bank.pressEnter();
-                            break;
                         }else {
+                            Bank.printSavingAccountStatement();
                             currentAccounts.get(0).getSavingAccounts().get(0).printSavingAccount();
-                            Bank.pressEnter();
-                            break;
                         }
                     }
+                    Bank.pressEnter();
+                    break;
                 }
                 case 24:{
                     if (currentAccounts.isEmpty()){
                         System.out.println("Hãy mở tài khoản trước.");
                         Bank.pressEnter();
                         break;
-                    }else if (currentAccounts.get(0).getLoanAccounts().isEmpty()){
+                    }else if (currentAccounts.get(0).getSavingAccounts().isEmpty()){
                         System.out.println("Chua co tk tiet kiem");
                         Bank.pressEnter();
                         break;
@@ -143,57 +126,64 @@ public class ATM extends Bank{
                         currentAccounts.get(0).deposit(currentAccounts.get(0)
                                 .getSavingAccounts().get(0).finalSettlement());
                         currentAccounts.get(0).getSavingAccounts().clear();
-
+                        break;
                     }
                 }
 
                 case 31:{
                     if (currentAccounts.isEmpty()){
                         System.out.println("Hãy mở tài khoản trước.");
-                        Bank.pressEnter();
-                        break;
                     }else {
                         currentAccounts.get(0).getLoanAccounts().add(currentAccounts.get(0).createLoanAccount());
-                        Bank.pressEnter();
-                        break;
                     }
+                    Bank.pressEnter();
+                    break;
                 }
                 //bug null index
                 case 32:{
-                    if (currentAccounts.get(0).getLoanAccounts().isEmpty()) {
+                    if (currentAccounts.isEmpty()){
+                        System.out.println("Hãy mở tài khoản trước.");
+                    }
+                    else if(currentAccounts.get(0).getLoanAccounts().isEmpty()) {
                         System.out.println("Chưa có khoản vay nào.");
-                        Bank.pressEnter();
-                        break;
                     }else {
                         currentAccounts.get(0).getLoanAccounts().get(0).printLoanAccount();
-                        Bank.pressEnter();
-                        break;
                     }
+                    Bank.pressEnter();
+                    break;
                 }
                 //bug null index
                 case 33:{
-                    if (currentAccounts.get(0).getLoanAccounts().isEmpty()) {
-                        System.out.println("Chưa có khoản vay nào.");
-                        Bank.pressEnter();
-                        break;
-                    }else {
-                        currentAccounts.get(0).withdraw(currentAccounts.get(0).
-                                getLoanAccounts().get(0).finalSettlement());
-                        currentAccounts.get(0).getLoanAccounts().clear();
-                        break;
+                    if (currentAccounts.isEmpty()){
+                        System.out.println("Hãy mở tài khoản trước.");
                     }
+                    else if (currentAccounts.get(0).getLoanAccounts().isEmpty()) {
+                        System.out.println("Chưa có khoản vay nào.");
+                    }else {
+                            currentAccounts.get(0).withdraw(currentAccounts.get(0).
+                                    getLoanAccounts().get(0).finalSettlement());
+                            currentAccounts.get(0).getLoanAccounts().clear();
+                    }
+                    Bank.pressEnter();
+                    break;
                 }
                 //bug null index
                 case 34:{
-                    if (currentAccounts.get(0).getLoanAccounts().isEmpty()) {
+                    if (currentAccounts.isEmpty()){
+                        System.out.println("Hãy mở tài khoản trước.");
+                    }
+                    else if (currentAccounts.get(0).getLoanAccounts().isEmpty()) {
                         System.out.println("Chưa có khoản vay nào.");
-                        Bank.pressEnter();
-                        break;
                     }else {
                         currentAccounts.get(0).getLoanAccounts().get(0).LoanCalculator();
-                        Bank.pressEnter();
-                        break;
                     }
+                    Bank.pressEnter();
+                    break;
+                }
+
+                case 0:{
+                    System.out.println("Cookkkkkkkk");
+                    choice = 0;
                 }
             }
         }while (choice != 0);

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CurrentAccount extends Account {
-    private final double MINIMUM_BALANCE = 0;
+    private final double MINIMUM_BALANCE = 50000;
     private final double FEE = 0;
     private ArrayList<Transaction> transactions;
     private ArrayList<SavingAccount> savingAccounts;
@@ -20,7 +20,7 @@ public class CurrentAccount extends Account {
     }
 
     public CurrentAccount(String name, String id){
-        super(id,name);
+        super(name,id);
         this.balance = MINIMUM_BALANCE;
         this.transactions = new ArrayList<>();
         this.savingAccounts = new ArrayList<>();
@@ -36,7 +36,7 @@ public class CurrentAccount extends Account {
         System.out.print("Họ và tên: ");
         String name = inp.nextLine();
 
-        return new CurrentAccount(id,name);
+        return new CurrentAccount(name,id);
     }
 
     //generate saving account

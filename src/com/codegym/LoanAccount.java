@@ -1,7 +1,9 @@
 package com.codegym;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Calendar;
 import java.util.Date;
 
 public class LoanAccount implements FinalSettlement {
@@ -10,6 +12,8 @@ public class LoanAccount implements FinalSettlement {
     private int loanTerm;
     private double loanInterestRate;
     private Date dateCreated;
+    String timeStamp = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy").format(Calendar.getInstance().getTime());
+
 
     public LoanAccount(){}
 
@@ -17,7 +21,7 @@ public class LoanAccount implements FinalSettlement {
       this.loanTerm = loanTerm;
       this.loanAmount = loanAmount;
       this.loanInterestRate = loanInterestRate;
-      this.dateCreated = Bank.parseDate("16:20:15  17-04-2020");
+      this.dateCreated = Bank.parseDate(timeStamp);
     }
 
     public static double getLoanInterestRate(int month){

@@ -1,7 +1,9 @@
 package com.codegym;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -15,12 +17,14 @@ public class SavingAccount {
     private double regularSavingAmount;
     private double annualInterestRate;
     private double monthlyInterestRate;
+    String timeStamp = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy").format(Calendar.getInstance().getTime());
+
 
     public SavingAccount() {
 
     }
     public SavingAccount(double startBalance, double regularSavingAmount, int savingTerm, double annualInterestRate) {
-        this.dateCreated = Bank.parseDate(""); // Định ngay gửi tiết kiệm trong quá khứ để thực hiện tất toán tài khoản
+        this.dateCreated = Bank.parseDate(timeStamp); // Định ngay gửi tiết kiệm tài khoản
         this.startBalance = startBalance;
         this.savingTerm = savingTerm;
         this.regularSavingAmount = regularSavingAmount;
@@ -170,7 +174,8 @@ public class SavingAccount {
 
     //rest day in month
     public double getRemainDeposit(int day) {
-        return day * getTotalDeposit(Bank.getTimeElapsed(getDateCreated(), new Date())[1] + 1) / 30;
+        return day * getTotalDeposit
+                (Bank.getTimeElapsed(getDateCreated(), new Date())[1] + 1) / 30;
     }
 
     //kiem tra dung han truoc han
