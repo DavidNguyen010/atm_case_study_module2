@@ -29,14 +29,46 @@ public class CurrentAccount extends Account {
 
     // generate new account
 
-    public static CurrentAccount CreateAccount(){
+    public static CurrentAccount CreateAccount() {
+        boolean flagID;
+        boolean flagUserName;
         Scanner inp = new Scanner(System.in);
-        System.out.print("CMND: ");
-        String id = inp.nextLine();
-        System.out.print("Họ và tên: ");
-        String name = inp.nextLine();
+        String name;
+        String id;
 
-        return new CurrentAccount(name,id);
+        do {
+            String numberIDPattern = "\\d{12}";
+            System.out.print("CMND: ");
+            id = inp.nextLine();
+            flagID = id.matches(numberIDPattern);
+            if (!flagID) {
+                System.out.println("Ban can nhap so CMND 12 so");
+            }
+        } while (!flagID);
+
+        do {
+            String userNamePattern = ".*[a-z]{5,20}.*";
+            System.out.print("Họ và tên: ");
+            name = inp.nextLine();
+            flagUserName =name.matches(userNamePattern);
+            if (!flagUserName){
+                System.out.println("Moi ban nhap lai ho va ten  khong chua chu so va ky tu dac biet");
+            }
+        }while (!flagUserName);
+
+        return new CurrentAccount(name, id);
+    }
+
+    @Override
+    public String getId() {
+        return super.getId();
+    }
+
+    public  String  lastFourIDNumber(){
+       String idNumber = this.getId();
+       int pos = idNumber.lastIndexOf("");
+       String lastFourNumber = idNumber.substring(pos-4);
+        return lastFourNumber;
     }
 
     //generate saving account
@@ -115,6 +147,7 @@ public class CurrentAccount extends Account {
         System.out.println("          Thông Tin Tài Khoản          ");
         System.out.println("---------------------------------------");
         System.out.printf("%-2s%-15s%20s%3s", "|", "Tên:", getCustomerName(), "|\n");
+        System.out.printf("%-2s%-15s%20s%3s", "|", "So cmnd","****-****-"+lastFourIDNumber(), "|\n");
         System.out.printf("%-2s%-15s%20s%3s", "|", "Số tài khoản:", getAccountNumber(), "|\n");
         System.out.printf("%-2s%-15s%20s%3s", "|", "Ngày tạo:", Bank.convertDate(getDateCreated()), "|\n");
         System.out.printf("%-2s%-15s%20.2f%3s", "|", "Số dư:", getBalance(), "|\n");

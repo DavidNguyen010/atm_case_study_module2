@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="dd6babc6-af03-46a8-a66a-f2f73b78a7a8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codegym/ATM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codegym/ATM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codegym/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codegym/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/codegym/CurrentAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codegym/CurrentAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codegym/LoanAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codegym/LoanAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/codegym/SavingAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/codegym/SavingAccount.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +16,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -63,6 +59,7 @@
       <updated>1698220673709</updated>
       <workItem from="1698220674793" duration="13750000" />
       <workItem from="1698305718107" duration="3822000" />
+      <workItem from="1698809856444" duration="5339000" />
     </task>
     <servers />
   </component>
